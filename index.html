@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia & Liam's Wedding Invitation</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        champagne: '#D4AF37',
+                        'champagne-light': '#F4E8C1',
+                        roseGold: '#C5A059',
+                        blush: '#F9F1F0',
+                        deepCharcoal: '#2C2C2C',
+                        softGold: '#E6C594'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <div id="app-container" class="w-full sm:max-w-[430px] h-screen sm:h-[900px] bg-cream shadow-2xl sm:rounded-[40px] relative overflow-hidden flex flex-col border-0 sm:border-8 sm:border-champagne/40">
+
+        <div id="petals-container" class="absolute inset-0 pointer-events-none overflow-hidden z-30"></div>
+
+        <div id="cover-screen" class="absolute inset-0 z-50 bg-gradient-to-b from-[#1a1a1a] via-[#2c2c2c] to-[#1a1a1a] text-cream flex flex-col items-center justify-between p-8 text-center transition-transform duration-1000 ease-in-out">
+            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+            <div class="mt-8 z-10">
+                <p class="text-xs uppercase tracking-[0.3em] text-champagne mb-2 font-medium">The Wedding Celebration</p>
+                <div class="w-12 h-[1px] bg-champagne mx-auto my-3"></div>
+                <h3 class="text-sm italic font-serif text-roseGold">You Are Cordially Invited</h3>
+            </div>
+
+            <div class="z-10 my-auto py-6">
+                <div class="relative inline-block mb-8">
+                    <div class="absolute inset-0 rounded-full pulse-seal"></div>
+
+                    <button id="open-btn" class="relative w-28 h-28 rounded-full bg-gradient-to-br from-champagne via-roseGold to-[#9A7B38] text-cream flex flex-col items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group border-2 border-champagne-light/50 cursor-pointer">
+                        <i class="fa-solid fa-heart text-2xl mb-1 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-[10px] tracking-widest uppercase font-semibold">Open Invite</span>
+                    </button>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl font-serif font-bold shimmer mb-3 tracking-wide">Sophia & Liam</h1>
+                <p class="text-xs text-gray-300 tracking-[0.2em] uppercase">October 18, 2026 • Tuscany, Italy</p>
+            </div>
+
+            <div class="mb-4 z-10 text-[11px] text-gray-400 tracking-wider">
+                <p>Tap the seal to open your invitation</p>
+            </div>
+        </div>
+
+        <button id="audio-toggle" class="absolute top-4 right-4 z-40 bg-cream/80 backdrop-blur-md text-champagne border border-champagne/40 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-champagne hover:text-cream transition-all duration-300 cursor-pointer hidden"
+            title="Toggle Ambient Music">
+            <i id="audio-icon" class="fa-solid fa-volume-xmark text-sm"></i>
+        </button>
+
+        <div id="main-content" class="flex-1 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-1000 scroll-smooth">
+
+            <section class="relative h-[85vh] flex flex-col justify-between items-center text-center p-6 bg-[url('https://placehold.co/600x900/f4e8c1/2c2c2c?text=Engagement+Photo')] bg-cover bg-center">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-cream"></div>
+
+                <div class="relative z-10 mt-6 text-cream">
+                    <span class="text-xs uppercase tracking-[0.25em] bg-black/30 backdrop-blur-sm px-4 py-1.5 rounded-full border border-champagne/40 font-medium">Save Our Date</span>
+                </div>
+
+                <div class="relative z-10 mb-8 px-4 glass-dark p-6 rounded-3xl w-full max-w-[350px] shadow-2xl border border-champagne/30">
+                    <p class="text-xs text-champagne italic mb-1 font-serif">Together with their families</p>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-cream mb-2">Sophia & Liam</h1>
+                    <p class="text-xs text-gray-300 mb-4">Are getting married</p>
+                    <div class="w-16 h-[1px] bg-champagne mx-auto mb-4"></div>
+
+                    <div class="flex justify-around text-xs font-semibold text-champagne-light uppercase tracking-widest">
+                        <span>Sunday</span>
+                        <span>•</span>
+                        <span>10 . 18 . 2026</span>
+                        <span>•</span>
+                        <span>Florence</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-8 bg-cream text-center">
+                <h3 class="text-xs uppercase tracking-[0.2em] text-roseGold mb-4 font-semibold">Counting Down To Forever</h3>
+
+                <div id="countdown" class="grid grid-cols-4 gap-3 max-w-xs mx-auto">
+                    <div class="glass-card p-3 rounded-2xl shadow-sm">
+                        <span id="days" class="text-2xl font-serif font-bold text-deepCharcoal block">00</span>
+                        <span class="text-[10px] uppercase text-gray-500 tracking-wider">Days</span>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-2xl shadow-sm">
+                        <span id="hours" class="text-2xl font-serif font-bold text-deepCharcoal block">00</span>
+                        <span class="text-[10px] uppercase text-gray-500 tracking-wider">Hours</span>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-2xl shadow-sm">
+                        <span id="minutes" class="text-2xl font-serif font-bold text-deepCharcoal block">00</span>
+                        <span class="text-[10px] uppercase text-gray-500 tracking-wider">Mins</span>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-2xl shadow-sm">
+                        <span id="seconds" class="text-2xl font-serif font-bold text-deepCharcoal block">00</span>
+                        <span class="text-[10px] uppercase text-gray-500 tracking-wider">Secs</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-10 bg-blush/50 text-center relative">
+                <div class="max-w-sm mx-auto">
+                    <span class="text-2xl text-champagne mb-2 block">
+                        <i class="fa-solid fa-feather"></i>
+                    </span>
+
+                    <h2 class="text-2xl font-serif font-bold mb-4 text-deepCharcoal">Our Love Story</h2>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-light mb-6">
+                        "From a serendipitous meeting under the Tuscan sun to endless shared laughter and quiet dreams, our journey has been nothing short of magic. Now, we are ready to take our greatest vow yet."
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="glass-card p-4 rounded-2xl text-center shadow-sm">
+                            <div class="w-16 h-16 mx-auto rounded-full overflow-hidden mb-2 border border-champagne">
+                                <img src="https://placehold.co/200x200/d4af37/ffffff?text=S" alt="Sophia" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-serif font-bold text-sm">Sophia Vance</h4>
+                            <p class="text-[10px] text-gray-500">The Bride</p>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-2xl text-center shadow-sm">
+                            <div class="w-16 h-16 mx-auto rounded-full overflow-hidden mb-2 border border-champagne">
+                                <img src="https://placehold.co/200x200/c5a059/ffffff?text=L" alt="Liam" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="font-serif font-bold text-sm">Liam Sterling</h4>
+                            <p class="text-[10px] text-gray-500">The Groom</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-10 bg-cream">
+                <div class="text-center mb-6">
+                    <span class="text-xs uppercase tracking-[0.2em] text-champagne font-medium">When & Where</span>
+                    <h2 class="text-2xl font-serif font-bold mt-1">The Celebration</h2>
+                </div>
+
+                <div class="space-y-4 max-w-sm mx-auto">
+                    <div class="glass-card p-5 rounded-3xl shadow-md border-l-4 border-l-champagne">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-champagne/20 flex items-center justify-center text-champagne shrink-0">
+                                <i class="fa-solid fa-church text-sm"></i>
+                            </div>
+
+                            <div>
+                                <h4 class="font-serif font-bold text-base mb-1">The Ceremony</h4>
+                                <p class="text-xs text-gray-600 mb-1">3:00 PM - Villa Cora Chapel</p>
+                                <p class="text-[11px] text-gray-500 mb-3">Viale Machiavelli 18, 50125 Firenze FI, Italy</p>
+
+                                <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs font-semibold text-champagne hover:underline">
+                                    <i class="fa-solid fa-map-location-dot mr-1.5"></i> View on Map
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-3xl shadow-md border-l-4 border-l-roseGold">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-roseGold/20 flex items-center justify-center text-roseGold shrink-0">
+                                <i class="fa-solid fa-champagne-glasses text-sm"></i>
+                            </div>
+
+                            <div>
+                                <h4 class="font-serif font-bold text-base mb-1">The Reception</h4>
+                                <p class="text-xs text-gray-600 mb-1">5:30 PM - Grand Ballroom & Gardens</p>
+                                <p class="text-[11px] text-gray-500 mb-3">Villa Cora Main Estate, Florence</p>
+
+                                <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs font-semibold text-roseGold hover:underline">
+                                    <i class="fa-solid fa-map-location-dot mr-1.5"></i> View on Map
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button id="add-calendar-btn" class="bg-deepCharcoal text-cream text-xs font-medium tracking-wider uppercase py-3 px-6 rounded-full shadow-lg hover:bg-champagne hover:text-deepCharcoal transition-all duration-300 cursor-pointer">
+                        <i class="fa-regular fa-calendar-days mr-2"></i>
+                        Add to Google Calendar
+                    </button>
+                </div>
+            </section>
+
+            <section class="px-6 py-10 bg-blush/30">
+                <div class="text-center mb-8">
+                    <span class="text-xs uppercase tracking-[0.2em] text-champagne font-medium">Order of Events</span>
+                    <h2 class="text-2xl font-serif font-bold mt-1">Wedding Itinerary</h2>
+                </div>
+
+                <div class="max-w-xs mx-auto relative border-l-2 border-champagne/40 ml-4 sm:ml-8 space-y-6">
+                    <div class="relative pl-6">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-champagne border-2 border-cream"></div>
+                        <span class="text-[10px] font-semibold text-roseGold tracking-widest uppercase">3:00 PM</span>
+                        <h4 class="font-serif font-bold text-sm text-deepCharcoal">Guest Arrival & Seating</h4>
+                        <p class="text-[11px] text-gray-600 mt-0.5">Welcome drinks served at the chapel courtyard.</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-champagne border-2 border-cream"></div>
+                        <span class="text-[10px] font-semibold text-roseGold tracking-widest uppercase">3:30 PM</span>
+                        <h4 class="font-serif font-bold text-sm text-deepCharcoal">Ceremony Begins</h4>
+                        <p class="text-[11px] text-gray-600 mt-0.5">Exchange of vows and ring blessing.</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-champagne border-2 border-cream"></div>
+                        <span class="text-[10px] font-semibold text-roseGold tracking-widest uppercase">5:00 PM</span>
+                        <h4 class="font-serif font-bold text-sm text-deepCharcoal">Cocktail Hour</h4>
+                        <p class="text-[11px] text-gray-600 mt-0.5">Canapés, live acoustic music, and golden hour photos.</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-champagne border-2 border-cream"></div>
+                        <span class="text-[10px] font-semibold text-roseGold tracking-widest uppercase">6:30 PM</span>
+                        <h4 class="font-serif font-bold text-sm text-deepCharcoal">Reception & Dinner</h4>
+                        <p class="text-[11px] text-gray-600 mt-0.5">Grand entrance, toast, and Italian feast.</p>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-champagne border-2 border-cream"></div>
+                        <span class="text-[10px] font-semibold text-roseGold tracking-widest uppercase">9:00 PM</span>
+                        <h4 class="font-serif font-bold text-sm text-deepCharcoal">Dancing & Send-off</h4>
+                        <p class="text-[11px] text-gray-600 mt-0.5">First dance followed by sparkler send-off.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-10 bg-cream">
+                <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto text-center">
+                    <div class="glass-card p-5 rounded-3xl shadow-sm">
+                        <div class="text-champagne text-xl mb-2">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-sm mb-1">Dress Code</h4>
+                        <p class="text-[11px] text-gray-600">Formal / Black-Tie Optional. Neutral or pastel tones encouraged.</p>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-3xl shadow-sm">
+                        <div class="text-champagne text-xl mb-2">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-sm mb-1">Registry</h4>
+                        <p class="text-[11px] text-gray-600">Your presence is our gift, but if you wish, contributions to our honeymoon are welcomed.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-12 bg-[#2c2c2c] text-cream rounded-t-[40px] shadow-inner relative">
+                <div class="text-center mb-6">
+                    <span class="text-xs uppercase tracking-[0.2em] text-champagne font-medium">Kindly Respond</span>
+                    <h2 class="text-2xl font-serif font-bold mt-1">RSVP Form</h2>
+                    <p class="text-xs text-gray-300 mt-1">Please respond by September 10, 2026</p>
+                </div>
+
+                <form id="rsvp-form" class="space-y-4 max-w-sm mx-auto">
+
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-champagne mb-1 font-medium">Full Name(s)</label>
+                        <input type="text" id="guest-name" required placeholder="e.g. Mr. & Mrs. Smith" class="w-full bg-white/10 border border-champagne/40 rounded-xl px-4 py-2.5 text-xs text-cream placeholder-gray-400 focus:outline-none focus:border-champagne transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-champagne mb-1 font-medium">Attendance</label>
+                        <select id="attendance" class="w-full bg-[#383838] border border-champagne/40 rounded-xl px-4 py-2.5 text-xs text-cream focus:outline-none focus:border-champagne transition-all">
+                            <option value="accept">Accepts with Pleasure</option>
+                            <option value="decline">Decline with Regret</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-champagne mb-1 font-medium">Number of Guests</label>
+                        <select id="guest-count" class="w-full bg-[#383838] border border-champagne/40 rounded-xl px-4 py-2.5 text-xs text-cream focus:outline-none focus:border-champagne transition-all">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-champagne mb-1 font-medium">Meal Preference</label>
+                        <select id="meal-pref" class="w-full bg-[#383838] border border-champagne/40 rounded-xl px-4 py-2.5 text-xs text-cream focus:outline-none focus:border-champagne transition-all">
+                            <option value="beef">Tuscan Grilled Beef Fillet</option>
+                            <option value="fish">Pan-Seared Sea Bass</option>
+                            <option value="vegetarian">Wild Mushroom Risotto (Vegetarian)</option>
+                            <option value="vegan">Roasted Vegetable Tart (Vegan)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-champagne mb-1 font-medium">Wishes for the Couple</label>
+                        <textarea id="guest-wishes" rows="3" placeholder="Leave a warm note for Sophia & Liam..." class="w-full bg-white/10 border border-champagne/40 rounded-xl px-4 py-2.5 text-xs text-cream placeholder-gray-400 focus:outline-none focus:border-champagne transition-all resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-champagne to-roseGold text-deepCharcoal font-semibold uppercase text-xs tracking-widest py-3 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.98] transition-all cursor-pointer">
+                        Submit RSVP
+                    </button>
+                </form>
+
+                <div id="rsvp-success" class="hidden text-center py-8 space-y-3">
+                    <div class="w-16 h-16 bg-champagne/20 text-champagne rounded-full flex items-center justify-center mx-auto text-2xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <h3 class="text-xl font-serif font-bold text-champagne">Thank You!</h3>
+
+                    <p id="success-msg" class="text-xs text-gray-300 leading-relaxed px-4">
+                        Your response has been received. We can't wait to celebrate with you!
+                    </p>
+
+                    <button id="reset-rsvp" class="text-xs text-champagne underline pt-2 cursor-pointer">
+                        Submit another response
+                    </button>
+                </div>
+
+                <div class="mt-12 text-center text-[10px] text-gray-500 border-t border-white/10 pt-6">
+                    <p>Created with love for Sophia & Liam • 2026</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

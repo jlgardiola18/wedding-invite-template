@@ -1,0 +1,122 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #232323;
+    color: #2c2c2c;
+    overflow-x: hidden;
+}
+
+.font-serif {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fdfbf7;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 3px;
+}
+
+@keyframes floatPetal {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(105vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.petal {
+    position: fixed;
+    background: radial-gradient(circle, #fce4ec 0%, #f48fb1 100%);
+    border-radius: 150% 0 150% 0;
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0.7;
+    animation: floatPetal linear infinite;
+}
+
+@keyframes pulseGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+    }
+}
+
+.pulse-seal {
+    animation: pulseGlow 2.5s infinite;
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        #c5a059 0%,
+        #f4e8c1 50%,
+        #c5a059 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.glass-card {
+    background: rgba(253, 251, 247, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.glass-dark {
+    background: rgba(44, 44, 44, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+#main-content {
+    -webkit-overflow-scrolling: touch;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+textarea {
+    line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+    body {
+        background: #fdfbf7;
+    }
+
+    #app-container {
+        border-radius: 0;
+    }
+}
