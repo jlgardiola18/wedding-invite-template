@@ -1,177 +1,266 @@
-javascript
-const petals = document.getElementById('petals-container');
+const weddingDate = new Date("October 18, 2026 15:00:00").getTime();
 
-for (let i = 0; i < 15; i++) {
-    const petal = document.createElement('div');
-    const size = Math.random() * 10 + 8;
+const openButton = document.getElementById("openButton");
+const opening = document.getElementById("opening");
+const invitation = document.getElementById("invitation");
 
-    petal.className = 'petal';
-    petal.style.width = `${size}px`;
-    petal.style.height = `${size * 1.4}px`;
-    petal.style.left = `${Math.random() * 100}%`;
-    petal.style.top = '-10%';
-    petal.style.animationDuration = `${Math.random() * 8 + 6}s`;
-    petal.style.animationDelay = `${Math.random() * 5}s`;
+const soundButton = document.getElementById("soundButton");
+const soundText = document.getElementById("soundText");
 
-    petals.appendChild(petal);
-}
+const rsvpForm = document.getElementById("rsvpForm");
+const successMessage = document.getElementById("successMessage");
 
-const weddingDate = new Date('October 18, 2026 15:00:00').getTime();
+const calendarButton = document.getElementById("calendarButton");
+
+
+/* Opening */
+
+openButton.addEventListener("click", function() {
+
+    opening.classList.add("hide");
+
+    document.body.style.overflow = "auto";
+
+    startChime();
+
+    setTimeout(function() {
+        opening.style.display = "none";
+    }, 1000);
+
+});
+
+
+/* Countdown */
 
 function updateCountdown() {
-    const now = Date.now();
-    const distance = weddingDate - now;
 
-    if (distance <= 0) {
-        document.getElementById('countdown').innerHTML =
-            '<div class="col-span-4 text-xs font-serif text-champagne font-bold">The Wedding Day Has Arrived!</div>';
+    const now = new Date().getTime();
+    const difference = weddingDate - now;
+
+    if (difference <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
         return;
     }
 
-    const days = Math.floor(distance / 86400000);
-    const hours = Math.floor((distance % 86400000) / 3600000);
-    const minutes = Math.floor((distance % 3600000) / 60000);
-    const seconds = Math.floor((distance % 60000) / 1000);
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
 
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+
 }
 
 updateCountdown();
+
 setInterval(updateCountdown, 1000);
 
-let audioContext;
-let playing = false;
-let audioTimer;
 
-const audioButton = document.getElementById('audio-toggle');
-const audioIcon = document.getElementById('audio-icon');
+/* Sound */
 
-function playChime() {
-    if (!playing || !audioContext) return;
+let audioContext = null;
+let soundEnabled = false;
 
-    const notes = [523.25, 659.25, 783.99, 1046.5];
-    const frequency = notes[Math.floor(Math.random() * notes.length)];
+function startChime() {
 
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-
-    oscillator.type = 'sine';
-    oscillator.frequency.value = frequency;
-
-    gain.gain.setValueAtTime(0.05, audioContext.currentTime);
-    gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        audioContext.currentTime + 3
-    );
-
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 3);
-}
-
-function startAudio() {
-    if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    if (!soundEnabled) {
+        return;
     }
 
-    if (audioContext.state === 'suspended') {
+    if (!audioContext) {
+        audioContext = new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+    }
+
+    const notes = [
+        523.25,
+        659.25,
+        783.99
+    ];
+
+    notes.forEach(function(frequency, index) {
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.value = frequency;
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        const startTime =
+            audioContext.currentTime +
+            index * 0.15;
+
+        gain.gain.setValueAtTime(
+            0,
+            startTime
+        );
+
+        gain.gain.linearRampToValueAtTime(
+            0.05,
+            startTime + 0.05
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            startTime + 1
+        );
+
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 1.1);
+
+    });
+
+}
+
+
+soundButton.addEventListener("click", function() {
+
+    if (!audioContext) {
+        audioContext = new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+    }
+
+    if (audioContext.state === "suspended") {
         audioContext.resume();
     }
 
-    playing = true;
+    soundEnabled = !soundEnabled;
 
-    audioIcon.className = 'fa-solid fa-volume-high text-sm';
-    audioButton.classList.add('bg-champagne', 'text-cream');
+    if (soundEnabled) {
 
-    playChime();
+        soundText.textContent = "Sound On";
+        soundButton.classList.add("active");
 
-    clearInterval(audioTimer);
-    audioTimer = setInterval(playChime, 3500);
-}
+        startChime();
 
-function stopAudio() {
-    playing = false;
-
-    audioIcon.className = 'fa-solid fa-volume-xmark text-sm';
-    audioButton.classList.remove('bg-champagne', 'text-cream');
-
-    clearInterval(audioTimer);
-    audioTimer = null;
-}
-
-audioButton.addEventListener('click', () => {
-    if (playing) {
-        stopAudio();
     } else {
-        startAudio();
+
+        soundText.textContent = "Sound";
+        soundButton.classList.remove("active");
+
     }
+
 });
 
-const openButton = document.getElementById('open-btn');
-const cover = document.getElementById('cover-screen');
-const content = document.getElementById('main-content');
 
-openButton.addEventListener('click', () => {
-    cover.style.transform = 'translateY(-100%)';
-    cover.style.opacity = '0';
+/* Scroll animations */
 
-    setTimeout(() => {
-        cover.style.display = 'none';
-        content.style.opacity = '1';
-        content.style.pointerEvents = 'auto';
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-        audioButton.classList.remove('hidden');
-        startAudio();
-    }, 800);
-});
+if ("IntersectionObserver" in window) {
 
-document.getElementById('add-calendar-btn').addEventListener('click', () => {
-    const title = encodeURIComponent("Sophia & Liam's Wedding");
-    const details = encodeURIComponent(
-        'Wedding ceremony at Villa Cora Chapel followed by reception at Grand Ballroom & Gardens.'
+    const observer = new IntersectionObserver(
+        function(entries, observer) {
+
+            entries.forEach(function(entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.15
+        }
     );
-    const location = encodeURIComponent(
-        'Villa Cora, Viale Machiavelli 18, 50125 Firenze FI, Italy'
-    );
-    const dates = '20261018T130000Z/20261018T220000Z';
 
-    const url =
-        `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
+    revealElements.forEach(function(element) {
+        observer.observe(element);
+    });
 
-    window.open(url, '_blank');
-});
+} else {
 
-const form = document.getElementById('rsvp-form');
-const success = document.getElementById('rsvp-success');
-const successMessage = document.getElementById('success-msg');
-const resetButton = document.getElementById('reset-rsvp');
+    revealElements.forEach(function(element) {
+        element.classList.add("show");
+    });
 
-form.addEventListener('submit', (event) => {
+}
+
+
+/* Google Calendar */
+
+const startDate = "20261018T130000Z";
+const endDate = "20261018T190000Z";
+
+const calendarUrl =
+    "https://calendar.google.com/calendar/render" +
+    "?action=TEMPLATE" +
+    "&text=Sophia%20%26%20Liam%27s%20Wedding" +
+    "&dates=" + startDate + "/" + endDate +
+    "&details=Join%20us%20for%20the%20wedding%20celebration%20of%20Sophia%20and%20Liam." +
+    "&location=Villa%20Cora%2C%20Florence%2C%20Italy";
+
+calendarButton.href = calendarUrl;
+
+
+/* RSVP */
+
+rsvpForm.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
-    const name = document.getElementById('guest-name').value;
-    const attendance = document.getElementById('attendance').value;
-    const guests = document.getElementById('guest-count').value;
+    const name =
+        document.getElementById("name").value.trim();
 
-    if (attendance === 'accept') {
-        successMessage.textContent =
-            `Thank you, ${name}! We have reserved ${guests} seat(s) for you. We can't wait to celebrate in Tuscany!`;
-    } else {
-        successMessage.textContent =
-            `Thank you, ${name}, for letting us know. We will miss you on our special day!`;
+    if (!name) {
+        return;
     }
 
-    form.style.display = 'none';
-    success.classList.remove('hidden');
-});
+    successMessage.textContent =
+        "Thank you, " + name +
+        ". Your RSVP has been received.";
 
-resetButton.addEventListener('click', () => {
-    form.reset();
-    success.classList.add('hidden');
-    form.style.display = 'block';
+    successMessage.classList.add("show");
+
+    const fields =
+        rsvpForm.querySelectorAll(
+            "input, select, textarea, button"
+        );
+
+    fields.forEach(function(field) {
+        field.disabled = true;
+    });
+
 });
