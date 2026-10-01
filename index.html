@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Wedding invitation">
-    <meta name="theme-color" content="#f7f5f0">
+    <meta name="description" content="Sheen & Lloyd Wedding Invitation">
 
-    <title>Sophia & Liam | Wedding Invitation</title>
-
-    <link rel="icon" href="assets/favicon.png">
+    <title>Sheen & Lloyd | Wedding Invitation</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -23,35 +20,53 @@
 <body>
 
     <!-- Opening -->
+
     <section class="opening" id="opening">
+
+        <div class="opening-leaf leaf-left">
+            ❧
+        </div>
+
+        <div class="opening-leaf leaf-right">
+            ❧
+        </div>
 
         <div class="opening-content">
 
-            <p class="small-title">
-                WEDDING INVITATION
+            <p class="eyebrow">
+                THE WEDDING OF
             </p>
 
-            <div class="monogram">
-                S & L
+            <div class="opening-monogram">
+                S <span>&</span> L
             </div>
 
-            <div class="small-line"></div>
+            <div class="ornament">
+                <span></span>
+                <b>✦</b>
+                <span></span>
+            </div>
 
-            <p class="opening-text">
-                Together with their families, Sophia and Liam invite you to celebrate their wedding.
+            <p class="opening-intro">
+                Together with their families
             </p>
 
-            <h1 class="opening-names">
-                Sophia
-                <span>&</span> Liam
+            <h1>
+                Sheen
+                <em>&</em> Lloyd
             </h1>
 
             <p class="opening-date">
-                October 18, 2026
+                December 1, 2026
             </p>
 
-            <button class="open-button" id="openButton">
-                Open Invitation
+            <p class="opening-place">
+                San Jose, Occidental Mindoro
+            </p>
+
+            <button id="openButton" class="open-button">
+                <span>Open Invitation</span>
+                <i>↓</i>
             </button>
 
         </div>
@@ -59,18 +74,35 @@
     </section>
 
 
-    <!-- Main invitation -->
+    <!-- Invitation -->
+
     <main class="invitation" id="invitation">
 
+        <!-- Decorative side elements -->
+
+        <div class="side-decoration side-left">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="side-decoration side-right">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
         <!-- Header -->
+
         <header class="header">
 
-            <div class="header-monogram">
-                S & L
-            </div>
+            <a href="#invitation" class="header-logo">
+                S <span>&</span> L
+            </a>
 
             <button class="sound-button" id="soundButton" type="button">
-                <span>♪</span>
+                <span class="sound-icon">♪</span>
                 <span id="soundText">Sound</span>
             </button>
 
@@ -78,83 +110,128 @@
 
 
         <!-- Hero -->
+
         <section class="hero">
 
-            <div class="hero-photo reveal">
+            <div class="hero-frame reveal">
 
-                <img src="assets/wedding-photo.jpg" alt="Sophia and Liam">
+                <div class="hero-corner top-left"></div>
+                <div class="hero-corner top-right"></div>
+                <div class="hero-corner bottom-left"></div>
+                <div class="hero-corner bottom-right"></div>
+
+                <img src="assets/wedding-photo.jpg" alt="Sheen and Lloyd">
 
             </div>
 
             <div class="hero-content reveal">
 
-                <p class="small-title">
+                <p class="eyebrow">
                     WE ARE GETTING MARRIED
                 </p>
 
                 <h1>
-                    Sophia
-                    <span>&</span> Liam
+                    Sheen
+                    <em>&</em> Lloyd
                 </h1>
 
+                <div class="hero-divider">
+                    <span></span>
+                    <b>✦</b>
+                    <span></span>
+                </div>
+
                 <p class="hero-date">
-                    October 18, 2026
+                    December 1, 2026
                 </p>
 
-                <p class="hero-location">
-                    Florence, Italy
+                <p class="hero-place">
+                    San Jose, Occidental Mindoro
                 </p>
 
+            </div>
+
+            <div class="scroll-note">
+                <span></span> SCROLL TO EXPLORE
             </div>
 
         </section>
 
 
         <!-- Welcome -->
+
         <section class="section welcome">
 
-            <p class="section-number">
+            <div class="section-mark">
                 01
+            </div>
+
+            <div class="floral-mark">
+                ❧
+            </div>
+
+            <p class="eyebrow">
+                A NOTE FROM US
             </p>
 
             <h2>
-                We would love to celebrate with you.
+                Two lives,
+                <br> one beautiful story.
             </h2>
 
-            <p>
-                Please join us as we exchange our vows and celebrate this special day with the people who mean the most to us.
+            <div class="gold-line"></div>
+
+            <p class="section-text">
+                We are so excited to celebrate this special chapter with the people we love. Your presence will make our wedding day even more meaningful, and we cannot wait to share it with you.
             </p>
 
         </section>
 
 
         <!-- Countdown -->
-        <section class="section countdown-section">
 
-            <p class="section-number">
-                COUNTDOWN
-            </p>
+        <section class="countdown-section">
 
-            <div class="countdown">
+            <div class="countdown-inner">
 
-                <div>
-                    <strong id="days">00</strong>
-                    <span>Days</span>
-                </div>
+                <p class="eyebrow">
+                    UNTIL WE SAY "I DO"
+                </p>
 
-                <div>
-                    <strong id="hours">00</strong>
-                    <span>Hours</span>
-                </div>
+                <div class="countdown">
 
-                <div>
-                    <strong id="minutes">00</strong>
-                    <span>Minutes</span>
-                </div>
+                    <div class="countdown-item">
+                        <strong id="days">00</strong>
+                        <span>Days</span>
+                    </div>
 
-                <div>
-                    <strong id="seconds">00</strong>
-                    <span>Seconds</span>
+                    <div class="countdown-separator">
+                        :
+                    </div>
+
+                    <div class="countdown-item">
+                        <strong id="hours">00</strong>
+                        <span>Hours</span>
+                    </div>
+
+                    <div class="countdown-separator">
+                        :
+                    </div>
+
+                    <div class="countdown-item">
+                        <strong id="minutes">00</strong>
+                        <span>Minutes</span>
+                    </div>
+
+                    <div class="countdown-separator">
+                        :
+                    </div>
+
+                    <div class="countdown-item">
+                        <strong id="seconds">00</strong>
+                        <span>Seconds</span>
+                    </div>
+
                 </div>
 
             </div>
@@ -163,137 +240,176 @@
 
 
         <!-- Details -->
+
         <section class="section details">
 
-            <p class="section-number">
+            <div class="section-mark">
                 02
+            </div>
+
+            <p class="eyebrow">
+                JOIN US
             </p>
 
-            <h2 class="section-heading">
+            <h2>
                 The Details
             </h2>
+
+            <div class="gold-line"></div>
 
 
             <div class="details-grid">
 
-                <div class="detail">
+                <article class="detail-card reveal">
+
+                    <div class="detail-number">
+                        I
+                    </div>
 
                     <p class="detail-label">
-                        CEREMONY
+                        THE CEREMONY
                     </p>
 
                     <h3>
-                        Villa Cora Chapel
+                        St. Joseph
+                        <br> Cathedral
                     </h3>
 
-                    <p class="detail-time">
-                        3:30 PM
+                    <div class="detail-time">
+                        1:30 PM
+                    </div>
+
+                    <p>
+                        Barangay 7 (Poblacion)
+                        <br> San Jose, Occidental Mindoro
                     </p>
 
-                    <p class="detail-address">
-                        Viale Machiavelli 18<br> Florence, Italy
-                    </p>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Villa+Cora+Florence+Italy" target="_blank" rel="noopener" class="location-link">
-                        View Location ↗
+                    <a href="https://www.google.com/maps/place/St.+Joseph+the+Worker+Cathedral/@12.3541713,121.0658471,17z/data=!3m1!4b1!4m6!3m5!1s0x33bb032ff09646d5:0xeb5d390f991cbdd1!8m2!3d12.3541661!4d121.068422!16s%2Fg%2F11bw67t3vv?entry=ttu&g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" rel="noopener" class="location-link">
+                        View Location
+                        <span>↗</span>
                     </a>
 
-                </div>
+                </article>
 
 
-                <div class="detail">
+                <article class="detail-card reveal">
+
+                    <div class="detail-number">
+                        II
+                    </div>
 
                     <p class="detail-label">
-                        RECEPTION
+                        THE RECEPTION
                     </p>
 
                     <h3>
-                        Grand Ballroom & Gardens
+                        Magsaysay Hillside
+                        <br> Resort
                     </h3>
 
-                    <p class="detail-time">
-                        5:30 PM
+                    <div class="detail-time">
+                        4:30 PM
+                    </div>
+
+                    <p>
+                        Barangay Poblacion
+                        <br> Magsaysay, Occidental Mindoro
                     </p>
 
-                    <p class="detail-address">
-                        Villa Cora Main Estate<br> Florence, Italy
-                    </p>
-
-                    <a href="https://www.google.com/maps/search/?api=1&query=Villa+Cora+Florence+Italy" target="_blank" rel="noopener" class="location-link">
-                        View Location ↗
+                    <a href="https://www.google.com/maps/place/Magsaysay+Hillside+Resort/@12.3150064,121.1433404,17z/data=!3m1!4b1!4m9!3m8!1s0x33bb1dbe2a60ed3d:0x7408759a887128c2!5m2!4m1!1i2!8m2!3d12.3150012!4d121.1459153!16s%2Fg%2F12hr00692?entry=ttu&g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" rel="noopener" class="location-link">
+                        View Location
+                        <span>↗</span>
                     </a>
 
-                </div>
+                </article>
 
             </div>
 
 
-            <a href="#" class="calendar-button" id="calendarButton" target="_blank" rel="noopener">
-                Add to Google Calendar ↗
+            <a href="#" id="calendarButton" class="calendar-button" target="_blank" rel="noopener">
+                <span>+</span> Add to Google Calendar
             </a>
 
         </section>
 
 
         <!-- Timeline -->
+
         <section class="section timeline">
 
-            <p class="section-number">
+            <div class="section-mark">
                 03
+            </div>
+
+            <p class="eyebrow">
+                WEDDING DAY
             </p>
 
-            <h2 class="section-heading">
-                The Day
+            <h2>
+                The Celebration
             </h2>
+
+            <div class="gold-line"></div>
 
 
             <div class="timeline-list">
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <time>
-                        3:00 PM
-                    </time>
+                    <div class="timeline-time">
+                        2:00
+                        <small>PM</small>
+                    </div>
 
-                    <div>
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
                         <h3>
                             Guest Arrival
                         </h3>
 
                         <p>
-                            Please arrive and make yourself comfortable.
+                            Welcome and settle in before the ceremony.
                         </p>
                     </div>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <time>
-                        3:30 PM
-                    </time>
+                    <div class="timeline-time">
+                        2:30
+                        <small>PM</small>
+                    </div>
 
-                    <div>
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
                         <h3>
                             Ceremony
                         </h3>
 
                         <p>
-                            The exchange of our vows.
+                            The moment we exchange our vows.
                         </p>
                     </div>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <time>
-                        5:00 PM
-                    </time>
+                    <div class="timeline-time">
+                        5:00
+                        <small>PM</small>
+                    </div>
 
-                    <div>
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
                         <h3>
                             Cocktail Hour
                         </h3>
@@ -306,38 +422,44 @@
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <time>
-                        6:30 PM
-                    </time>
+                    <div class="timeline-time">
+                        6:30
+                        <small>PM</small>
+                    </div>
 
-                    <div>
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
                         <h3>
                             Dinner & Reception
                         </h3>
 
                         <p>
-                            Dinner, speeches, and celebration.
+                            Dinner, speeches, and a night of celebration.
                         </p>
                     </div>
 
                 </div>
 
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal">
 
-                    <time>
-                        9:00 PM
-                    </time>
+                    <div class="timeline-time">
+                        9:00
+                        <small>PM</small>
+                    </div>
 
-                    <div>
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
                         <h3>
                             Dancing & Send-Off
                         </h3>
 
                         <p>
-                            One last celebration together.
+                            Let's end the evening with one more dance.
                         </p>
                     </div>
 
@@ -348,47 +470,58 @@
         </section>
 
 
-        <!-- Dress code -->
-        <section class="section dress-code">
+        <!-- Dress Code -->
 
-            <p class="section-number">
-                04
-            </p>
+        <section class="dress-code">
 
-            <p class="small-title">
-                DRESS CODE
-            </p>
+            <div class="dress-pattern"></div>
 
-            <h2>
-                Formal / Black-Tie Optional
-            </h2>
+            <div class="dress-content">
 
-            <p>
-                Neutral and soft pastel tones are welcome.
-            </p>
+                <p class="eyebrow">
+                    DRESS CODE
+                </p>
+
+                <div class="dress-icon">
+                    ✦
+                </div>
+
+                <h2>
+                    Formal
+                    <em>/</em> Black-Tie Optional
+                </h2>
+
+                <p>
+                    Neutral and soft pastel tones are warmly welcomed.
+                </p>
+
+            </div>
 
         </section>
 
 
         <!-- RSVP -->
+
         <section class="section rsvp">
 
-            <p class="section-number">
-                05
-            </p>
+            <div class="section-mark">
+                04
+            </div>
 
-            <div class="rsvp-heading">
+            <div class="rsvp-intro">
 
-                <p class="small-title">
-                    PLEASE RESPOND
+                <p class="eyebrow">
+                    KINDLY RESPOND
                 </p>
 
                 <h2>
                     Will you join us?
                 </h2>
 
+                <div class="gold-line"></div>
+
                 <p>
-                    Kindly respond by September 1, 2026.
+                    Please let us know if you will be celebrating with us by December 1, 2026.
                 </p>
 
             </div>
@@ -410,12 +543,13 @@
                 <div class="form-group">
 
                     <label>
-                        Attendance
+                        Will you attend?
                     </label>
 
                     <div class="attendance-options">
 
-                        <label>
+                        <label class="choice">
+
                             <input
                                 type="radio"
                                 name="attendance"
@@ -426,10 +560,12 @@
                             <span>
                                 Joyfully accepts
                             </span>
+
                         </label>
 
 
-                        <label>
+                        <label class="choice">
+
                             <input
                                 type="radio"
                                 name="attendance"
@@ -439,6 +575,7 @@
                             <span>
                                 Regretfully declines
                             </span>
+
                         </label>
 
                     </div>
@@ -451,7 +588,7 @@
                     <div class="form-group">
 
                         <label for="guests">
-                            Guests
+                            Number of Guests
                         </label>
 
                         <select id="guests" name="guests">
@@ -480,7 +617,7 @@
                     <div class="form-group">
 
                         <label for="meal">
-                            Meal
+                            Meal Preference
                         </label>
 
                         <select id="meal" name="meal">
@@ -493,12 +630,12 @@
                                 Fish
                             </option>
 
-                            <option value="Vegetarian">
-                                Vegetarian
+                            <option value="Chicken">
+                                Chicken
                             </option>
 
-                            <option value="Vegan">
-                                Vegan
+                            <option value="Toyo">
+                                Toyo
                             </option>
 
                         </select>
@@ -514,42 +651,52 @@
                         Message
                     </label>
 
-                    <textarea id="message" name="message" rows="4" placeholder="A message for the couple"></textarea>
+                    <textarea id="message" name="message" rows="4" placeholder="Leave a message for Sheen & Lloyd"></textarea>
 
                 </div>
 
 
                 <button type="submit" class="submit-button">
                     Send RSVP
+                    <span>→</span>
                 </button>
 
 
-                <p class="success-message" id="successMessage">
-                    Thank you. Your RSVP has been received.
-                </p>
+                <p class="success-message" id="successMessage"></p>
 
             </form>
 
         </section>
 
 
-        <!-- Footer -->
+        <!-- Closing -->
+
         <footer class="footer">
 
-            <div class="footer-monogram">
-                S & L
+            <div class="footer-ornament">
+                <span></span>
+                <b>✦</b>
+                <span></span>
             </div>
 
-            <p>
-                With love,
+            <p class="footer-small">
+                WITH LOVE
             </p>
 
             <h2>
-                Sophia & Liam
+                Sheen
+                <em>&</em> Lloyd
             </h2>
 
             <p class="footer-date">
-                October 18, 2026 · Florence, Italy
+                December 1, 2026
+                <span>•</span> San Jose, Occidental Mindoro
+            </p>
+
+            <div class="footer-line"></div>
+
+            <p class="footer-thanks">
+                Thank you for being part of our story.
             </p>
 
         </footer>

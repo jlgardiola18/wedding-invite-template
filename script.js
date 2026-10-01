@@ -1,31 +1,26 @@
-const weddingDate = new Date("October 18, 2026 15:00:00").getTime();
-
-const openButton = document.getElementById("openButton");
-const opening = document.getElementById("opening");
-const invitation = document.getElementById("invitation");
-
-const soundButton = document.getElementById("soundButton");
-const soundText = document.getElementById("soundText");
-
-const rsvpForm = document.getElementById("rsvpForm");
-const successMessage = document.getElementById("successMessage");
-
-const calendarButton = document.getElementById("calendarButton");
+const weddingDate = new Date(
+    "December 1, 2026 15:00:00"
+).getTime();
 
 
 /* Opening */
+
+const opening = document.getElementById("opening");
+const openButton = document.getElementById("openButton");
+
+document.body.classList.add("locked");
 
 openButton.addEventListener("click", function() {
 
     opening.classList.add("hide");
 
-    document.body.style.overflow = "auto";
+    document.body.classList.remove("locked");
 
-    startChime();
+    playChime();
 
     setTimeout(function() {
         opening.style.display = "none";
-    }, 1000);
+    }, 1200);
 
 });
 
@@ -87,17 +82,46 @@ setInterval(updateCountdown, 1000);
 let audioContext = null;
 let soundEnabled = false;
 
-function startChime() {
+const soundButton =
+    document.getElementById("soundButton");
+
+const soundText =
+    document.getElementById("soundText");
+
+
+function createAudioContext() {
+
+    if (!audioContext) {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) {
+            return null;
+        }
+
+        audioContext = new AudioContext();
+    }
+
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+
+    return audioContext;
+}
+
+
+function playChime() {
 
     if (!soundEnabled) {
         return;
     }
 
-    if (!audioContext) {
-        audioContext = new(
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+    const context = createAudioContext();
+
+    if (!context) {
+        return;
     }
 
     const notes = [
@@ -109,38 +133,38 @@ function startChime() {
     notes.forEach(function(frequency, index) {
 
         const oscillator =
-            audioContext.createOscillator();
+            context.createOscillator();
 
         const gain =
-            audioContext.createGain();
+            context.createGain();
+
+        const start =
+            context.currentTime +
+            index * 0.15;
 
         oscillator.type = "sine";
         oscillator.frequency.value = frequency;
 
         oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        const startTime =
-            audioContext.currentTime +
-            index * 0.15;
+        gain.connect(context.destination);
 
         gain.gain.setValueAtTime(
             0,
-            startTime
+            start
         );
 
         gain.gain.linearRampToValueAtTime(
-            0.05,
-            startTime + 0.05
+            0.04,
+            start + 0.05
         );
 
         gain.gain.exponentialRampToValueAtTime(
             0.001,
-            startTime + 1
+            start + 1
         );
 
-        oscillator.start(startTime);
-        oscillator.stop(startTime + 1.1);
+        oscillator.start(start);
+        oscillator.stop(start + 1.1);
 
     });
 
@@ -149,29 +173,22 @@ function startChime() {
 
 soundButton.addEventListener("click", function() {
 
-    if (!audioContext) {
-        audioContext = new(
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
-    }
-
-    if (audioContext.state === "suspended") {
-        audioContext.resume();
-    }
+    createAudioContext();
 
     soundEnabled = !soundEnabled;
 
     if (soundEnabled) {
 
         soundText.textContent = "Sound On";
+
         soundButton.classList.add("active");
 
-        startChime();
+        playChime();
 
     } else {
 
         soundText.textContent = "Sound";
+
         soundButton.classList.remove("active");
 
     }
@@ -179,41 +196,50 @@ soundButton.addEventListener("click", function() {
 });
 
 
-/* Scroll animations */
+/* Scroll reveal */
 
 const revealElements =
     document.querySelectorAll(".reveal");
 
+
 if ("IntersectionObserver" in window) {
 
-    const observer = new IntersectionObserver(
-        function(entries, observer) {
+    const observer =
+        new IntersectionObserver(
+            function(entries, observer) {
 
-            entries.forEach(function(entry) {
+                entries.forEach(function(entry) {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    entry.target.classList.add("show");
+                        entry.target.classList.add("show");
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(
+                            entry.target
+                        );
 
-                }
+                    }
 
-            });
+                });
 
-        }, {
-            threshold: 0.15
-        }
-    );
+            }, {
+                threshold: 0.12
+            }
+        );
+
 
     revealElements.forEach(function(element) {
+
         observer.observe(element);
+
     });
 
 } else {
 
     revealElements.forEach(function(element) {
+
         element.classList.add("show");
+
     });
 
 }
@@ -227,30 +253,46 @@ const endDate = "20261018T190000Z";
 const calendarUrl =
     "https://calendar.google.com/calendar/render" +
     "?action=TEMPLATE" +
-    "&text=Sophia%20%26%20Liam%27s%20Wedding" +
-    "&dates=" + startDate + "/" + endDate +
-    "&details=Join%20us%20for%20the%20wedding%20celebration%20of%20Sophia%20and%20Liam." +
-    "&location=Villa%20Cora%2C%20Florence%2C%20Italy";
+    "&text=Sheen%20%26%20Lloyd%27s%20Wedding" +
+    "&dates=" +
+    startDate +
+    "%2F" +
+    endDate +
+    "&details=Join%20us%20for%20the%20wedding%20celebration%20of%20Sheen%20and%20Lloyd." +
+    "&location=San%20Jose%2C%20Occidental%20Mindoro";
 
-calendarButton.href = calendarUrl;
+
+document.getElementById(
+    "calendarButton"
+).href = calendarUrl;
 
 
 /* RSVP */
+
+const rsvpForm =
+    document.getElementById("rsvpForm");
+
+const successMessage =
+    document.getElementById("successMessage");
+
 
 rsvpForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
     const name =
-        document.getElementById("name").value.trim();
+        document.getElementById("name")
+        .value
+        .trim();
 
     if (!name) {
         return;
     }
 
     successMessage.textContent =
-        "Thank you, " + name +
-        ". Your RSVP has been received.";
+        "Thank you, " +
+        name +
+        ". We can't wait to celebrate with you.";
 
     successMessage.classList.add("show");
 
@@ -260,7 +302,9 @@ rsvpForm.addEventListener("submit", function(event) {
         );
 
     fields.forEach(function(field) {
+
         field.disabled = true;
+
     });
 
 });
